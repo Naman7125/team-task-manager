@@ -35,12 +35,12 @@ export function KpiCard({
   return (
     <div
       className={cn(
-        "h-full rounded-xl border border-border/70 bg-card p-5 shadow-elegant hover-lift animate-fade-up",
+        "h-full rounded-xl border border-border/70 bg-card p-4 shadow-elegant hover-lift animate-fade-up sm:p-5",
         borderAccent,
       )}
     >
-      <div className="mb-4 flex items-start justify-between gap-2">
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+      <div className="mb-3 flex items-start justify-between gap-2 sm:mb-4">
+        <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground sm:tracking-[0.18em]">
           {label}
         </span>
         <div className={cn("rounded-md border p-1.5", chipClass)}>
@@ -50,7 +50,9 @@ export function KpiCard({
       {loading ? (
         <Skeleton className="h-8 w-12" />
       ) : (
-        <div className={cn("font-display text-3xl leading-none", valueClass)}>{value}</div>
+        <div className={cn("font-display text-2xl leading-none sm:text-3xl", valueClass)}>
+          {value}
+        </div>
       )}
     </div>
   );

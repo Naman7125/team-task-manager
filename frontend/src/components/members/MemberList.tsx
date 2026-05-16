@@ -61,7 +61,54 @@ export function MemberList({
 
   return (
     <>
-      <div className="overflow-hidden rounded-lg border border-border bg-card">
+      <div className="space-y-3 md:hidden">
+        {members.map((m) => {
+          const isOnlyAdmin = m.role === "ADMIN" && admins <= 1;
+          return (
+            <div key={m.user.id} className="rounded-xl border border-border bg-card p-4 shadow-sm">
+              <div className="flex items-start gap-3">
+                <Avatar className="h-10 w-10">
+                  <AvatarFallback className="text-xs">{initials(m.user.name)}</AvatarFallback>
+                </Avatar>
+                <div className="min-w-0 flex-1">
+                  <div className="truncate font-medium text-foreground">{m.user.name}</div>
+                  <div className="truncate text-xs text-muted-foreground">{m.user.email}</div>
+                  <div className="mt-1 text-xs text-muted-foreground">
+                    Joined {formatDate(m.joinedAt)}
+                  </div>
+                </div>
+                {canManage && m.user.id !== currentUserId && !isOnlyAdmin && (
+                  <Button size="icon" variant="ghost" onClick={() => setRemoving(m)}>
+                    <Trash2 className="h-4 w-4 text-muted-foreground" />
+                  </Button>
+                )}
+              </div>
+              <div className="mt-4">
+                {canManage ? (
+                  <Select
+                    value={m.role}
+                    onValueChange={(v) => roleM.mutate({ userId: m.user.id, role: v as Role })}
+                    disabled={isOnlyAdmin && m.role === "ADMIN"}
+                  >
+                    <SelectTrigger className="h-10 w-full">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="ADMIN">Admin</SelectItem>
+                      <SelectItem value="MEMBER" disabled={isOnlyAdmin}>
+                        Member
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                ) : (
+                  <Badge variant={m.role === "ADMIN" ? "default" : "secondary"}>{m.role}</Badge>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="hidden overflow-hidden rounded-lg border border-border bg-card md:block">
         <table className="w-full">
           <thead className="bg-muted/40 text-xs uppercase tracking-wide text-muted-foreground">
             <tr>

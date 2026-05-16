@@ -152,7 +152,7 @@ export function TaskDrawer({
                   disabled={!canFullEdit}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div className="space-y-1.5">
                   <Label>Status</Label>
                   <Select
@@ -221,9 +221,13 @@ export function TaskDrawer({
               </div>
             </div>
           )}
-          <SheetFooter className="gap-2">
+          <SheetFooter className="gap-2 px-4 pb-4">
             {canDeleteTask(project, user?.id) && task && (
-              <Button variant="destructive" onClick={() => setConfirmDel(true)} className="mr-auto">
+              <Button
+                variant="destructive"
+                onClick={() => setConfirmDel(true)}
+                className="sm:mr-auto"
+              >
                 <Trash2 className="mr-1.5 h-4 w-4" /> Delete
               </Button>
             )}

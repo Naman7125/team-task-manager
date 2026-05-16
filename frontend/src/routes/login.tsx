@@ -55,7 +55,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="relative grid min-h-screen lg:grid-cols-2">
+    <div className="relative grid min-h-svh lg:grid-cols-2">
       {/* Left – editorial brand panel */}
       <aside className="relative hidden overflow-hidden bg-gradient-aurora grain lg:block">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,transparent,oklch(0.978_0.012_80)_85%)]" />
@@ -92,9 +92,9 @@ function LoginPage() {
       </aside>
 
       {/* Right – form */}
-      <main className="relative flex items-center justify-center bg-background px-6 py-12">
+      <main className="relative flex items-center justify-center bg-background px-5 py-8 sm:px-6 sm:py-12">
         <div className="w-full max-w-sm animate-fade-up">
-          <div className="mb-10 lg:hidden">
+          <div className="mb-8 lg:hidden">
             <div className="flex items-center gap-2.5">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-brand text-brand-foreground font-display text-lg shadow-elegant">
                 T
@@ -106,7 +106,7 @@ function LoginPage() {
           <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.24em] text-brand">
             Sign in
           </p>
-          <h2 className="font-display text-4xl leading-tight tracking-tight text-balance">
+          <h2 className="font-display text-3xl leading-tight tracking-tight text-balance sm:text-4xl">
             Welcome{" "}
             <em className="italic font-normal" style={{ fontStyle: "italic" }}>
               back.
@@ -116,7 +116,7 @@ function LoginPage() {
             Pick up where you left off. Your team is waiting.
           </p>
 
-          <form onSubmit={submit} className="mt-10 space-y-5">
+          <form onSubmit={submit} className="mt-8 space-y-5 sm:mt-10">
             <div className="space-y-2">
               <Label
                 htmlFor="email"

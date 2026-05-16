@@ -31,19 +31,19 @@ function SettingsPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Avatar className="h-14 w-14">
+              <div className="flex items-start gap-3 sm:items-center">
+                <Avatar className="h-12 w-12 sm:h-14 sm:w-14">
                   <AvatarFallback className="text-base">{initials(user.name)}</AvatarFallback>
                 </Avatar>
-                <div>
+                <div className="min-w-0">
                   <div className="text-base font-semibold">{user.name}</div>
-                  <div className="text-sm text-muted-foreground">{user.email}</div>
+                  <div className="break-all text-sm text-muted-foreground">{user.email}</div>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-3 rounded-md border border-border bg-muted/20 p-3 text-sm">
-                <div>
+              <div className="grid grid-cols-1 gap-3 rounded-md border border-border bg-muted/20 p-3 text-sm sm:grid-cols-2">
+                <div className="min-w-0">
                   <div className="text-xs text-muted-foreground">User ID</div>
-                  <div className="font-mono text-xs">{user.id}</div>
+                  <div className="break-all font-mono text-xs">{user.id}</div>
                 </div>
                 {user.createdAt && (
                   <div>

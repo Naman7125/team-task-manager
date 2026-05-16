@@ -27,8 +27,8 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
 });
 
 const sectionCard =
-  "rounded-2xl border border-border/70 bg-card p-6 shadow-elegant animate-fade-up";
-const sectionHeading = "font-display text-2xl text-foreground tracking-tight";
+  "rounded-2xl border border-border/70 bg-card p-4 shadow-elegant animate-fade-up sm:p-6";
+const sectionHeading = "font-display text-xl text-foreground tracking-tight sm:text-2xl";
 const eyebrow = "font-mono text-[10px] uppercase tracking-[0.24em] text-brand";
 
 function DashboardPage() {
@@ -36,15 +36,15 @@ function DashboardPage() {
   const { role, roleLabel, adminProjectCount, memberProjectCount } = useWorkspaceRole();
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6 sm:space-y-10">
       {/* Editorial header strip */}
       <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-card shadow-elegant animate-fade-up">
-        <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-5 md:px-8">
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand text-brand-foreground shadow-elegant">
+        <div className="flex flex-col items-start justify-between gap-5 px-4 py-5 sm:flex-row sm:items-center sm:px-6 md:px-8">
+          <div className="flex min-w-0 items-start gap-3 sm:items-center sm:gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-brand text-brand-foreground shadow-elegant sm:h-12 sm:w-12">
               <Sparkles className="h-5 w-5" />
             </div>
-            <div>
+            <div className="min-w-0">
               <p className={eyebrow}>
                 {new Date().toLocaleDateString(undefined, {
                   weekday: "long",
@@ -76,7 +76,7 @@ function DashboardPage() {
           </div>
           <Link
             to="/tasks"
-            className="group inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-[11px] font-mono uppercase tracking-[0.2em] text-background transition-all hover:shadow-lift"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-4 py-2 text-[11px] font-mono uppercase tracking-[0.2em] text-background transition-all hover:shadow-lift sm:w-auto"
           >
             Today's focus
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -84,7 +84,7 @@ function DashboardPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
+      <div className="grid grid-cols-1 gap-3 min-[380px]:grid-cols-2 sm:gap-4 lg:grid-cols-5">
         <Link to="/projects">
           <KpiCard
             label="Projects"
@@ -133,7 +133,7 @@ function DashboardPage() {
       <div className="grid gap-6 lg:grid-cols-12">
         <div className="space-y-6 lg:col-span-8">
           <div className={sectionCard}>
-            <div className="mb-6 flex items-end justify-between gap-3">
+            <div className="mb-6 flex flex-col items-start justify-between gap-3 min-[420px]:flex-row min-[420px]:items-end">
               <div>
                 <p className={eyebrow}>Activity</p>
                 <h3 className={`${sectionHeading} mt-1`}>By status</h3>
@@ -150,7 +150,7 @@ function DashboardPage() {
           </div>
 
           <div className={sectionCard}>
-            <div className="mb-5 flex items-end justify-between">
+            <div className="mb-5 flex items-end justify-between gap-3">
               <div>
                 <p className={eyebrow}>Recent</p>
                 <h3 className={`${sectionHeading} mt-1`}>What just moved</h3>
@@ -174,7 +174,7 @@ function DashboardPage() {
                   return (
                     <li
                       key={t.id}
-                      className="group flex flex-wrap items-center justify-between gap-3 py-3.5 transition-colors hover:bg-accent/40 -mx-2 px-2 rounded-lg"
+                      className="group flex flex-col items-start justify-between gap-3 rounded-lg px-2 py-3.5 transition-colors hover:bg-accent/40 sm:-mx-2 sm:flex-row sm:items-center"
                     >
                       <div className="flex items-center gap-3 min-w-0">
                         <span
@@ -195,7 +195,7 @@ function DashboardPage() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         <PriorityBadge priority={t.priority} />
                         <StatusBadge status={t.status} />
                         <span
@@ -213,7 +213,7 @@ function DashboardPage() {
         </div>
 
         <div className="space-y-6 lg:col-span-4">
-          <div className="relative overflow-hidden rounded-2xl bg-foreground p-6 text-background shadow-lift animate-fade-up">
+          <div className="relative overflow-hidden rounded-2xl bg-foreground p-4 text-background shadow-lift animate-fade-up sm:p-6">
             <div className="absolute -top-16 -right-16 h-44 w-44 rounded-full bg-gradient-brand opacity-30 blur-3xl" />
             <div className="relative z-10">
               <div className="mb-6 flex items-center gap-2">

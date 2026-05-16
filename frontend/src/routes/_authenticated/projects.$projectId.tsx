@@ -163,10 +163,12 @@ function ProjectDetailPage() {
           <ChevronLeft className="mr-1 h-4 w-4" /> Projects
         </Link>
       </div>
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="flex flex-col items-start justify-between gap-3 sm:flex-row">
         <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <h1 className="truncate text-2xl font-semibold tracking-tight">{project.name}</h1>
+          <div className="flex flex-wrap items-center gap-2">
+            <h1 className="min-w-0 break-words text-2xl font-semibold tracking-tight">
+              {project.name}
+            </h1>
             <Badge
               variant={project.status === "ACTIVE" ? "secondary" : "outline"}
               className="capitalize"
@@ -210,12 +212,14 @@ function ProjectDetailPage() {
       </div>
 
       <Tabs defaultValue="overview">
-        <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="tasks">Tasks</TabsTrigger>
-          <TabsTrigger value="members">Members</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
-        </TabsList>
+        <div className="-mx-3 overflow-x-auto px-3 sm:mx-0 sm:px-0">
+          <TabsList className="min-w-max">
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="tasks">Tasks</TabsTrigger>
+            <TabsTrigger value="members">Members</TabsTrigger>
+            <TabsTrigger value="settings">Settings</TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="overview" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-3">
@@ -253,7 +257,7 @@ function ProjectDetailPage() {
                     {(tasks ?? []).slice(0, 6).map((t) => (
                       <li
                         key={t.id}
-                        className="flex items-center justify-between gap-2 py-2 text-sm"
+                        className="flex items-start justify-between gap-3 py-2 text-sm"
                       >
                         <button
                           onClick={() => setOpenDrawerId(t.id)}
@@ -261,7 +265,7 @@ function ProjectDetailPage() {
                         >
                           {t.title}
                         </button>
-                        <span className="text-xs text-muted-foreground">
+                        <span className="shrink-0 text-xs text-muted-foreground">
                           {formatRelative(t.updatedAt)}
                         </span>
                       </li>
@@ -298,9 +302,9 @@ function ProjectDetailPage() {
         </TabsContent>
 
         <TabsContent value="tasks" className="space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-col items-stretch justify-between gap-3 lg:flex-row lg:items-center">
             <TaskFilters value={filters} onChange={setFilters} members={memberList} />
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center justify-between gap-2 lg:justify-end">
               <div className="flex rounded-md border border-border p-0.5">
                 <Button
                   size="sm"
@@ -320,7 +324,11 @@ function ProjectDetailPage() {
                 </Button>
               </div>
               {canCreateTask(project, user?.id) && (
-                <Button size="sm" onClick={() => setOpenCreateTask(true)}>
+                <Button
+                  size="sm"
+                  onClick={() => setOpenCreateTask(true)}
+                  className="flex-1 sm:flex-none"
+                >
                   <Plus className="mr-1.5 h-4 w-4" /> New task
                 </Button>
               )}
@@ -346,10 +354,10 @@ function ProjectDetailPage() {
         </TabsContent>
 
         <TabsContent value="members" className="space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm text-muted-foreground">{memberList.length} members</p>
             {canManageMembers(project, user?.id) && (
-              <Button size="sm" onClick={() => setOpenAddMember(true)}>
+              <Button size="sm" onClick={() => setOpenAddMember(true)} className="w-full sm:w-auto">
                 <Plus className="mr-1.5 h-4 w-4" /> Add member
               </Button>
             )}
@@ -407,7 +415,7 @@ function ProjectDetailPage() {
                         rows={3}
                       />
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex flex-col gap-2 sm:flex-row">
                       <Button type="submit" size="sm" disabled={updateProjM.isPending}>
                         {updateProjM.isPending ? "Saving…" : "Save"}
                       </Button>

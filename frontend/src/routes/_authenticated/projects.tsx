@@ -64,15 +64,15 @@ function ProjectsPage() {
           </>
         }
       />
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="grid grid-cols-1 gap-2 min-[420px]:grid-cols-[1fr_auto] sm:flex sm:flex-wrap sm:items-center">
         <Input
           placeholder="Search projects…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="h-9 w-full sm:w-64"
+          className="h-10 w-full sm:h-9 sm:w-64"
         />
         <Select value={status} onValueChange={(v) => setStatus(v as ProjectStatus | "ALL")}>
-          <SelectTrigger className="h-9 w-[140px]">
+          <SelectTrigger className="h-10 w-full sm:h-9 sm:w-[140px]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

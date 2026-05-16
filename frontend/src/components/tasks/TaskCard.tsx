@@ -18,12 +18,12 @@ export function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }
       <div className="flex items-start justify-between gap-2">
         <p className="line-clamp-2 text-sm font-medium text-foreground">{task.title}</p>
       </div>
-      <div className="mt-2 flex items-center gap-1.5">
+      <div className="mt-2 flex flex-wrap items-center gap-1.5">
         <PriorityBadge priority={task.priority} className="text-[10px] px-1.5 py-0" />
         <StatusBadge status={task.status} className="text-[10px] px-1.5 py-0" />
       </div>
-      <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
-        <div className="flex items-center gap-1.5">
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+        <div className="flex min-w-0 items-center gap-1.5">
           {task.assignee ? (
             <>
               <Avatar className="h-5 w-5">

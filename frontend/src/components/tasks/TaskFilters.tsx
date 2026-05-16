@@ -36,18 +36,18 @@ export function TaskFilters({
   members?: Member[];
 }) {
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="grid w-full grid-cols-1 gap-2 min-[420px]:grid-cols-2 lg:flex lg:flex-wrap lg:items-center">
       <Input
         placeholder="Search tasks…"
         value={value.search}
         onChange={(e) => onChange({ ...value, search: e.target.value })}
-        className="h-9 w-full sm:w-56"
+        className="h-10 w-full lg:h-9 lg:w-56"
       />
       <Select
         value={value.status}
         onValueChange={(v) => onChange({ ...value, status: v as TaskFiltersValue["status"] })}
       >
-        <SelectTrigger className="h-9 w-[130px]">
+        <SelectTrigger className="h-10 w-full lg:h-9 lg:w-[130px]">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -61,7 +61,7 @@ export function TaskFilters({
         value={value.priority}
         onValueChange={(v) => onChange({ ...value, priority: v as TaskFiltersValue["priority"] })}
       >
-        <SelectTrigger className="h-9 w-[130px]">
+        <SelectTrigger className="h-10 w-full lg:h-9 lg:w-[130px]">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -76,7 +76,7 @@ export function TaskFilters({
           value={value.assigneeId}
           onValueChange={(v) => onChange({ ...value, assigneeId: v })}
         >
-          <SelectTrigger className="h-9 w-[160px]">
+          <SelectTrigger className="h-10 w-full lg:h-9 lg:w-[160px]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -90,7 +90,7 @@ export function TaskFilters({
           </SelectContent>
         </Select>
       )}
-      <Label className="ml-1 flex items-center gap-2 text-sm font-normal text-muted-foreground">
+      <Label className="flex min-h-10 items-center gap-2 rounded-md border border-border/60 px-3 text-sm font-normal text-muted-foreground min-[420px]:col-span-2 lg:min-h-0 lg:border-0 lg:px-1">
         <Checkbox
           checked={value.overdueOnly}
           onCheckedChange={(c) => onChange({ ...value, overdueOnly: !!c })}
