@@ -1,5 +1,5 @@
 {
-  "name": "team-task-manager",
+  "name": "taskly-backend",
   "version": "1.0.0",
   "description": "Production-ready REST backend for a team task manager.",
   "main": "dist/server.js",

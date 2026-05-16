@@ -1,6 +1,6 @@
-# Team Flow Frontend
+# Taskly Frontend
 
-React/TanStack frontend for the Team Task Manager backend.
+React/TanStack frontend for the Taskly backend.
 
 ## Setup
 

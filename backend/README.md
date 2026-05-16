@@ -1,4 +1,4 @@
-# Team Task Manager Backend
+# Taskly Backend
 
 REST API backend for a team task manager with authentication, projects, project-level roles, task assignment, status tracking, and dashboard metrics.
 
