@@ -6,6 +6,9 @@ import { defineConfig } from "vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
+  preview: {
+    allowedHosts: ["frontend-production-e1bc.up.railway.app"],
+  },
   plugins: [
     tsConfigPaths(),
     tailwindcss(),
