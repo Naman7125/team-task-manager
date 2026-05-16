@@ -6,15 +6,10 @@ React/TanStack frontend for the Taskly backend.
 
 ```bash
 npm install
-copy .env.example .env
 npm run dev
 ```
 
-Set the backend URL in `.env`:
-
-```env
-VITE_API_BASE_URL=http://localhost:4000
-```
+Run the backend on `http://localhost:4000`. Frontend `/api` requests are proxied to it during local development.
 
 ## Backend Contract
 

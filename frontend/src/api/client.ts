@@ -5,8 +5,7 @@ export const getToken = () =>
 export const setToken = (t: string) => localStorage.setItem(TOKEN_KEY, t);
 export const clearToken = () => localStorage.removeItem(TOKEN_KEY);
 
-const baseUrl = () =>
-  (import.meta.env.VITE_API_BASE_URL as string | undefined) || "http://localhost:4000";
+const baseUrl = () => (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "";
 
 export class ApiError extends Error {
   status: number;

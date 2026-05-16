@@ -7,6 +7,14 @@ import { defineConfig } from "vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:4000",
+        changeOrigin: true,
+      },
+    },
+  },
   preview: {
     allowedHosts: ["frontend-production-e1bc.up.railway.app"],
   },
